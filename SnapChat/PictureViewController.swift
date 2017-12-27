@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PictureViewController: UIViewController {
+class PictureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
     
@@ -16,10 +16,24 @@ class PictureViewController: UIViewController {
     
     @IBOutlet weak var nextButton: UIButton!
     
+    var imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        imagePicker.delegate = self
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        imageView.image = image
+        
+        // once image picked, make background transparent
+        imageView.backgroundColor = UIColor.clear
+        
+        imagePicker.dismiss(animated: true, completion: nil)
     }
 
 
@@ -27,5 +41,9 @@ class PictureViewController: UIViewController {
     }
     
     @IBAction func cameraTapped(_ sender: Any) {
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.allowsEditing = false
+        
+        present(imagePicker, animated: true, completion: nil)
     }
 }
