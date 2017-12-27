@@ -7,5 +7,8 @@ target 'SnapChat' do
 
   # Pods for SnapChat
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 
 end
