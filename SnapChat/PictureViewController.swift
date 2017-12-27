@@ -52,11 +52,13 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         nextButton.isEnabled = false
         descriptionTextField.isEnabled = false
         
-        let imageData = UIImagePNGRepresentation(imageView.image!)!
+        let fileName = NSUUID().uuidString
+        
+        let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)!
         
         let imagesFolder = Storage.storage().reference().child("images")
         
-        imagesFolder.child("hello.png").putData(imageData, metadata: nil, completion: { (metadata, error) in
+        imagesFolder.child("\(fileName).jpg").putData(imageData, metadata: nil, completion: { (metadata, error) in
             print("Uploading...")
             if error != nil {
                 print("We had an error:\(error)")
