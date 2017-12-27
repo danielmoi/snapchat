@@ -162,16 +162,32 @@
             </objects>
             <point key="canvasLocation" x="2580" y="34"/>
         </scene>
-        <!--View Controller-->
+        <!--Select User View Controller-->
         <scene sceneID="Ttb-Y9-6e7">
             <objects>
-                <viewController id="ynO-xB-inb" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ynO-xB-inb" customClass="SelectUserViewController" customModule="SnapChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JkM-lZ-2Nb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LHC-al-IYj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LHC-al-IYj" firstAttribute="leading" secondItem="hwh-a3-KYk" secondAttribute="leading" id="6D0-yc-7Go"/>
+                            <constraint firstItem="LHC-al-IYj" firstAttribute="trailing" secondItem="hwh-a3-KYk" secondAttribute="trailing" id="N6q-HC-9oQ"/>
+                            <constraint firstItem="hwh-a3-KYk" firstAttribute="bottom" secondItem="LHC-al-IYj" secondAttribute="bottom" id="orV-hZ-lv1"/>
+                            <constraint firstItem="LHC-al-IYj" firstAttribute="centerX" secondItem="JkM-lZ-2Nb" secondAttribute="centerX" id="sbA-xA-m7J"/>
+                            <constraint firstItem="LHC-al-IYj" firstAttribute="top" secondItem="hwh-a3-KYk" secondAttribute="top" id="vnr-BR-xQa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hwh-a3-KYk"/>
                     </view>
+                    <connections>
+                        <outlet property="usersTableView" destination="LHC-al-IYj" id="kBa-ga-o9c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jkb-7B-VC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
