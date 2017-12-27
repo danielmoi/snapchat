@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SigninViewController.swift
 //  SnapChat
 //
 //  Created by Daniel Moi on 26/12/17.
@@ -8,18 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SigninViewController: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
+    @IBAction func goAction(_ sender: Any) {
+        print("HELLO")
+    }
+    
 
 }
 
