@@ -28,6 +28,7 @@ class SnapsViewController: UIViewController, UITableViewDataSource, UITableViewD
         let currentUserId = Auth.auth().currentUser!.uid
         print(currentUserId)
 
+        // When something is ADDED to snaps, update
         Database.database().reference().child("users").child(currentUserId).child("snaps").observe(DataEventType.childAdded, with: { (snapshot) in
             print("WE GOT DATA")
             // this gets called once FOR EACH user in the database
@@ -39,11 +40,30 @@ class SnapsViewController: UIViewController, UITableViewDataSource, UITableViewD
             snap.desc = data["description"] as! String
             snap.from = data["from"] as! String
             snap.imageURL = data["imageURL"] as! String
+            snap.key = snapshot.key
             
             self.snaps.append(snap)
-
+            
             self.snapsTableView.reloadData()
+        })
         
+        // when something is REMOVED from snaps, update
+        Database.database().reference().child("users").child(currentUserId).child("snaps").observe(DataEventType.childRemoved, with: { (snapshot) in
+            print("WE GOT DATA")
+            // this gets called once FOR EACH user in the database
+            let snap = Snap()
+            
+            let data = snapshot.value as! NSDictionary
+            print(data)
+            
+            snap.desc = data["description"] as! String
+            snap.from = data["from"] as! String
+            snap.imageURL = data["imageURL"] as! String
+            snap.key = snapshot.key
+            
+            self.snaps.append(snap)
+            
+            self.snapsTableView.reloadData()
         })
     }
 
