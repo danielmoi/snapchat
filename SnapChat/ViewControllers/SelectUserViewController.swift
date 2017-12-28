@@ -70,5 +70,9 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
         ]
         
         Database.database().reference().child("users").child(user.uid).child("snaps").childByAutoId().setValue(snap)
+        
+        // return to list of snaps
+        // this also limits sending to one user
+        navigationController!.popToRootViewController(animated: true)
     }
 }

@@ -111,11 +111,51 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="snapsTableView" destination="pm8-Pi-WdV" id="wyA-o0-9e1"/>
+                        <segue destination="OYH-xa-bGC" kind="show" identifier="viewSnapSegue" id="QWz-dC-t0y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ajf-Pa-qeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1722" y="34"/>
+        </scene>
+        <!--Snap View Controller-->
+        <scene sceneID="6y5-Xo-fwa">
+            <objects>
+                <viewController id="OYH-xa-bGC" customClass="SnapViewController" customModule="SnapChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zx1-zk-p7v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06x-SL-I2w">
+                                <rect key="frame" x="5" y="592" width="365" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jj2-ro-iLI">
+                                <rect key="frame" x="10" y="74" width="355" height="508"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CiI-Ul-fBc" firstAttribute="trailing" secondItem="06x-SL-I2w" secondAttribute="trailing" constant="5" id="HIm-ko-6Hc"/>
+                            <constraint firstItem="jj2-ro-iLI" firstAttribute="leading" secondItem="CiI-Ul-fBc" secondAttribute="leading" constant="10" id="Ojx-J2-imT"/>
+                            <constraint firstItem="jj2-ro-iLI" firstAttribute="top" secondItem="CiI-Ul-fBc" secondAttribute="top" constant="10" id="PKw-rb-E44"/>
+                            <constraint firstItem="06x-SL-I2w" firstAttribute="top" secondItem="jj2-ro-iLI" secondAttribute="bottom" constant="10" id="enU-Zw-Y5I"/>
+                            <constraint firstItem="CiI-Ul-fBc" firstAttribute="trailing" secondItem="jj2-ro-iLI" secondAttribute="trailing" constant="10" id="fDX-65-Eo1"/>
+                            <constraint firstItem="CiI-Ul-fBc" firstAttribute="bottom" secondItem="06x-SL-I2w" secondAttribute="bottom" constant="10" id="iPt-TH-haW"/>
+                            <constraint firstItem="06x-SL-I2w" firstAttribute="leading" secondItem="CiI-Ul-fBc" secondAttribute="leading" constant="5" id="wEX-FU-DcB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CiI-Ul-fBc"/>
+                    </view>
+                    <connections>
+                        <outlet property="descLabel" destination="06x-SL-I2w" id="2gE-B5-wuf"/>
+                        <outlet property="imageView" destination="jj2-ro-iLI" id="pkx-WG-KTo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uK2-Mi-iQW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1721" y="791"/>
         </scene>
         <!--Title-->
         <scene sceneID="x2V-Bk-aSh">

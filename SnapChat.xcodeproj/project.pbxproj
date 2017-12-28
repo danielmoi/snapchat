@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E3EADF21FF49888009CA0D1 /* SnapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3EADF11FF49888009CA0D1 /* SnapViewController.swift */; };
 		1E6789451FF345B30083AEEE /* SnapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6789441FF345B30083AEEE /* SnapsViewController.swift */; };
 		1E6789471FF34C370083AEEE /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6789461FF34C370083AEEE /* PictureViewController.swift */; };
 		1E6789491FF455DC0083AEEE /* SelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6789481FF455CC0083AEEE /* SelectUserViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E3EADF11FF49888009CA0D1 /* SnapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapViewController.swift; sourceTree = "<group>"; };
 		1E6789441FF345B30083AEEE /* SnapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapsViewController.swift; sourceTree = "<group>"; };
 		1E6789461FF34C370083AEEE /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		1E6789481FF455CC0083AEEE /* SelectUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUserViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				1EE027F81FF2014600514C43 /* SigninViewController.swift */,
+				1E3EADF11FF49888009CA0D1 /* SnapViewController.swift */,
 				1E6789441FF345B30083AEEE /* SnapsViewController.swift */,
 				1E6789461FF34C370083AEEE /* PictureViewController.swift */,
 				1E6789481FF455CC0083AEEE /* SelectUserViewController.swift */,
@@ -262,6 +265,7 @@
 				1E6789471FF34C370083AEEE /* PictureViewController.swift in Sources */,
 				1E67894D1FF460A70083AEEE /* User.swift in Sources */,
 				1E6789491FF455DC0083AEEE /* SelectUserViewController.swift in Sources */,
+				1E3EADF21FF49888009CA0D1 /* SnapViewController.swift in Sources */,
 				1E6789521FF488B00083AEEE /* Snap.swift in Sources */,
 				1EE027F71FF2014600514C43 /* AppDelegate.swift in Sources */,
 				1E6789451FF345B30083AEEE /* SnapsViewController.swift in Sources */,
