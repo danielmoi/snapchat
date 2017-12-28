@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SnapViewController: UIViewController {
 
@@ -20,7 +21,9 @@ class SnapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        descLabel.text = snap.desc 
+        descLabel.text = snap.desc
+        
+        imageView.sd_setImage(with: URL(string: snap.imageURL), completed: nil)
     }
 
 
