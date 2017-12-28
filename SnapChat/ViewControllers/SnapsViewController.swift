@@ -74,19 +74,31 @@ class SnapsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return snaps.count
+        if snaps.count == 0 {
+            return 1
+        } else {
+            return snaps.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        print(snaps[indexPath.row])
-        cell.textLabel?.text = snaps[indexPath.row].from
+        
+        if snaps.count == 0 {
+            cell.textLabel?.text = "No snaps :("
+            
+        } else {
+            cell.textLabel?.text = snaps[indexPath.row].from
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let snap = snaps[indexPath.row]
-        performSegue(withIdentifier: "viewSnapSegue", sender: snap)
+        if snaps.count > 0 {
+            let snap = snaps[indexPath.row]
+            performSegue(withIdentifier: "viewSnapSegue", sender: snap)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
