@@ -21,6 +21,8 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
     // can't use description, because it's in one of the classes (?)
     var desc = ""
     
+    var uuid = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +69,7 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
             "description": desc,
             "imageURL": imageURL,
             "from": Auth.auth().currentUser!.email,
+            "uuid": uuid,
         ]
         
         Database.database().reference().child("users").child(user.uid).child("snaps").childByAutoId().setValue(snap)

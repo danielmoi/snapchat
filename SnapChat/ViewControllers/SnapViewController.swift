@@ -10,9 +10,10 @@ import UIKit
 import SDWebImage
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 class SnapViewController: UIViewController {
-
+    
     @IBOutlet weak var descLabel: UILabel!
     
     @IBOutlet weak var imageView: UIImageView!
@@ -22,7 +23,7 @@ class SnapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         descLabel.text = snap.desc
         
         imageView.sd_setImage(with: URL(string: snap.imageURL), completed: nil)
@@ -32,7 +33,14 @@ class SnapViewController: UIViewController {
         let currentUserId = Auth.auth().currentUser!.uid
         
         Database.database().reference().child("users").child(currentUserId).child("snaps").child(snap.key).removeValue()
+        
+        Storage.storage().reference().child("images").child("\(snap.uuid).jpg").delete { (error) in
+            print("**********")
+            print(error)
+        }
+        
+        
     }
-
-
+    
+    
 }

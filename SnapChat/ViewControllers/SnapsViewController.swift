@@ -30,8 +30,8 @@ class SnapsViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // When something is ADDED to snaps, update
         Database.database().reference().child("users").child(currentUserId).child("snaps").observe(DataEventType.childAdded, with: { (snapshot) in
-            print("WE GOT DATA")
-            // this gets called once FOR EACH user in the database
+            print("childAdded")
+            // this gets called once FOR EACH snap in the database
             let snap = Snap()
             
             let data = snapshot.value as! NSDictionary
@@ -41,6 +41,7 @@ class SnapsViewController: UIViewController, UITableViewDataSource, UITableViewD
             snap.from = data["from"] as! String
             snap.imageURL = data["imageURL"] as! String
             snap.key = snapshot.key
+            snap.uuid = data["uuid"] as! String
             
             self.snaps.append(snap)
             
@@ -49,7 +50,7 @@ class SnapsViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // when something is REMOVED from snaps, update
         Database.database().reference().child("users").child(currentUserId).child("snaps").observe(DataEventType.childRemoved, with: { (snapshot) in
-            
+            print("childRemoved")
             // gross
             var index = 0
             for snap in self.snaps {
