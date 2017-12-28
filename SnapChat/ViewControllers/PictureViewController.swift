@@ -27,6 +27,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         // Do any additional setup after loading the view.
         imagePicker.delegate = self
+        nextButton.isEnabled = false
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -36,6 +37,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         // once image picked, make background transparent
         imageView.backgroundColor = UIColor.clear
+        nextButton.isEnabled = true
         
         imagePicker.dismiss(animated: true, completion: nil)
     }
