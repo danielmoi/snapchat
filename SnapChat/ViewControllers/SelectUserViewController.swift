@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import FirebaseDatabase
 
 class SelectUserViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -65,7 +66,7 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
             "to": user.email,
             "description": desc,
             "imageURL": imageURL,
-            "from": ""
+            "from": Auth.auth().currentUser!.email,
         ]
         
         Database.database().reference().child("users").child(user.uid).child("snaps").childByAutoId().setValue(snap)

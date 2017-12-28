@@ -7,32 +7,62 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
-class SnapsViewController: UIViewController {
+class SnapsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var snapsTableView: UITableView!
+    
+    
+    // Snaps for the current user
+    var snaps: [Snap] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        snapsTableView.dataSource = self
+        snapsTableView.delegate = self
+        
+        
+        let currentUserId = Auth.auth().currentUser!.uid
+        print(currentUserId)
 
-        // Do any additional setup after loading the view.
+        Database.database().reference().child("users").child(currentUserId).child("snaps").observe(DataEventType.childAdded, with: { (snapshot) in
+            print("WE GOT DATA")
+            // this gets called once FOR EACH user in the database
+            let snap = Snap()
+            
+            let data = snapshot.value as! NSDictionary
+            print(data)
+            
+            snap.desc = data["description"] as! String
+            snap.from = data["from"] as! String
+            snap.imageURL = data["imageURL"] as! String
+            
+            self.snaps.append(snap)
+
+            self.snapsTableView.reloadData()
+        
+        })
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func logoutTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return snaps.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        print(snaps[indexPath.row])
+        cell.textLabel?.text = snaps[indexPath.row].from
+        return cell
+    }
+    
     
 }

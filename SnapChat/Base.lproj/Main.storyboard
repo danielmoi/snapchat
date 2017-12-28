@@ -71,15 +71,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="52" y="34"/>
         </scene>
         <!--Snaps View Controller-->
         <scene sceneID="EDw-2Z-XfK">
             <objects>
-                <viewController id="etP-5v-oij" customClass="SnapsViewController" customModule="SnapChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="etP-5v-oij" customClass="SnapsViewController" customModule="SnapChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hih-y2-8X2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pm8-Pi-WdV">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pm8-Pi-WdV" firstAttribute="leading" secondItem="Ts6-1b-2FJ" secondAttribute="leading" id="Dri-cl-UMy"/>
+                            <constraint firstItem="Ts6-1b-2FJ" firstAttribute="trailing" secondItem="pm8-Pi-WdV" secondAttribute="trailing" id="Jsh-mS-lwQ"/>
+                            <constraint firstItem="Ts6-1b-2FJ" firstAttribute="bottom" secondItem="pm8-Pi-WdV" secondAttribute="bottom" id="asA-ch-ULF"/>
+                            <constraint firstItem="pm8-Pi-WdV" firstAttribute="top" secondItem="Ts6-1b-2FJ" secondAttribute="top" id="efv-tD-jGe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ts6-1b-2FJ"/>
                     </view>
                     <toolbarItems/>
@@ -96,6 +109,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="snapsTableView" destination="pm8-Pi-WdV" id="wyA-o0-9e1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ajf-Pa-qeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
