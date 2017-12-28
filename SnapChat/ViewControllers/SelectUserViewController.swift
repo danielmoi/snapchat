@@ -10,15 +10,20 @@ import UIKit
 import FirebaseDatabase
 
 class SelectUserViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet weak var usersTableView: UITableView!
     
     var users: [User] = []
     
+    var imageURL = ""
+    
+    // can't use description, because it's in one of the classes (?)
+    var desc = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.usersTableView.dataSource = self
         self.usersTableView.delegate = self
@@ -28,7 +33,7 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
             let user = User()
             
             let data = snapshot.value as! NSDictionary
-
+            
             let email = data["email"] as! String
             user.email = email
             user.uid = snapshot.key
@@ -40,7 +45,7 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
             
         })
     }
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
@@ -54,6 +59,15 @@ class SelectUserViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        let user = users[indexPath.row]
+        
+        let snap = [
+            "to": user.email,
+            "description": desc,
+            "imageURL": imageURL,
+            "from": ""
+        ]
+        
+        Database.database().reference().child("users").child(user.uid).child("snaps").childByAutoId().setValue(snap)
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 import FirebaseStorage
 
 class PictureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var descriptionTextField: UITextField!
@@ -19,9 +19,10 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     var imagePicker = UIImagePickerController()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         imagePicker.delegate = self
     }
@@ -36,8 +37,8 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         imagePicker.dismiss(animated: true, completion: nil)
     }
-
-
+    
+    
     
     
     @IBAction func cameraTapped(_ sender: Any) {
@@ -63,13 +64,18 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
             if error != nil {
                 print("We had an error:\(error)")
             } else {
-                self.performSegue(withIdentifier: "selectUserSegue", sender: nil)
+                let urlString = metadata?.downloadURL()!.absoluteString
+                self.performSegue(withIdentifier: "selectUserSegue", sender: urlString)
             }
         })
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        let nextVC = segue.destination as! SelectUserViewController
+        nextVC.desc = descriptionTextField.text!
+        nextVC.imageURL = sender as! String
+        
+        
     }
 }
